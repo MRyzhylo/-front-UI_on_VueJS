@@ -3,8 +3,8 @@
     <h3>You can get or refresh list with all your posts, just click on a button below! </h3>
     <button v-on:click="get"> Get All Posts </button>
     <div v-for="post in posts" v-bind:key="post.id" class="single-block">
-      <h3> {{post.title}} </h3>
-      <h3> {{post.body}} </h3>
+      <h2> Title: {{post.title}} </h2>
+      <p> Body: {{post.body}} </p>
     </div>
   </div>
 </template>
@@ -20,17 +20,12 @@ export default {
   },
   methods: {
     get() {
-        this.$http.get('https://sbd4l7u6w1.execute-api.eu-central-1.amazonaws.com/dev/posts', 
-        {
-        Autorization: { 
-            type: "No Auth"}
-        })
+        this.$http.get('https://cors-anywhere.herokuapp.com/https://sbd4l7u6w1.execute-api.eu-central-1.amazonaws.com/dev/posts', {mode: 'cors'})
         .then(responce => {
           this.posts = responce.body;
-        })
-        .catch(err => {
-          console.log('Request failed', err);
-        })
+        }), responce => {
+          console.log("Request failed");
+        }
     }   
   }
 }
@@ -38,6 +33,20 @@ export default {
 </script>
 
 <style>
+  #list p {
+    margin: 20px auto;
+    display: block;
+    width: 400px;
+    text-align: center;
+  }
+
+  #list h2 {
+    margin: 20px auto;
+    display: block;
+    width: 400px;
+    text-align: center;
+  }
+
   #list h3 {
     margin: 20px auto;
     display: block;
