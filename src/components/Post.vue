@@ -20,10 +20,17 @@ export default {
     }
   },
   methods: {
-    post: function () {
+    post() {
       this.$http.post('https://sbd4l7u6w1.execute-api.eu-central-1.amazonaws.com/dev/post', {
+        type: "No Auth",
         title: this.title,
         body: this.body
+      })
+      .then(responce => {
+        console.log(responce);
+      })
+      .catch(err => {
+          console.log('Request failed', err);
       })
     }
   }

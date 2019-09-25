@@ -1,7 +1,11 @@
 <template>
   <div id="list">
-    <h3>You can get all your posts, just click on a button below! </h3>
-    <button > Get All Posts </button>
+    <h3>You can get or refresh list with all your posts, just click on a button below! </h3>
+    <button v-on:click="get"> Get All Posts </button>
+    <div v-for="post in posts" v-bind:key="post.id" class="single-block">
+      <h3> {{post.title}} </h3>
+      <h3> {{post.body}} </h3>
+    </div>
   </div>
 </template>
 
@@ -9,8 +13,27 @@
 
 export default {
   name: 'List',
+  data: function () {
+    return{
+      posts: []
+    }
+  },
+  methods: {
+    get() {
+        this.$http.get('https://sbd4l7u6w1.execute-api.eu-central-1.amazonaws.com/dev/posts', 
+        {
+        Autorization: { 
+            type: "No Auth"}
+        })
+        .then(responce => {
+          this.posts = responce.body;
+        })
+        .catch(err => {
+          console.log('Request failed', err);
+        })
+    }   
+  }
 }
-
 
 </script>
 
