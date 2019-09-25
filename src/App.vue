@@ -22,7 +22,7 @@ export default {
   name: 'app',
     components: {
       Post,
-      List,
+      List
     }
 }
 </script>

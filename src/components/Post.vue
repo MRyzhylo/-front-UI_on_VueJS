@@ -1,18 +1,35 @@
 <template>
   <div id="post">
     <div>
-      <input type="text" placeholder="Please enter your title here" />
-      <textarea type="textarea" placeholder="Enter your text here"> </textarea>
-      <button> Submit </button>
+      <input type="text" placeholder="Please enter your title here" v-model="title"/>
+      <textarea type="textarea" placeholder="Enter your text here" v-model="body"> </textarea>
+      <button v-on:click.prevent="post"> Submit </button>
     </div>
   </div>
 </template>
 
 <script>
 
+
 export default {
   name: 'Post',
+  data: function () {
+    return{
+    title: '',
+    body: ''
+    }
+  },
+  methods: {
+    post: function () {
+      this.$http.post('https://sbd4l7u6w1.execute-api.eu-central-1.amazonaws.com/dev/post', {
+        title: this.title,
+        body: this.body
+      })
+    }
+  }
 }
+ 
+  
 </script>
 
 <style>
