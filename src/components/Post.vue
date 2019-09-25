@@ -5,6 +5,9 @@
       <textarea type="textarea" placeholder="Enter your text here" v-model="body"> </textarea>
       <button v-on:click.prevent="post"> Submit </button>
     </div>
+    <div v-if="submitted">
+      <p> Thanks for your message! </p>
+    </div>
   </div>
 </template>
 
@@ -16,7 +19,8 @@ export default {
   data: function () {
     return{
     title: '',
-    body: ''
+    body: '',
+    submitted: false
     }
   },
   methods: {
@@ -27,7 +31,7 @@ export default {
         body: this.body
       })
       .then(responce => {
-        console.log(responce);
+        this.submitted = true;
       })
       .catch(err => {
           console.log('Request failed', err);
@@ -72,18 +76,28 @@ export default {
   }
 
   #post button {
-      width: 100px;
-      display: block;
-      border: none;
-      border-radius: 30px;
-      padding: 10px 20px;
-      background: linear-gradient(to bottom right, #b7ff57ab, #ffff00d1);
-      margin: 0 auto;
-      outline: none;
+    width: 100px;
+    display: block;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    background: linear-gradient(to bottom right, #b7ff57ab, #ffff00d1);
+    margin: 0 auto;
+    outline: none;
   }
 
   ::placeholder {
       text-align: center;
       opacity: 0.8;
+  }
+
+  #post p {
+    display: block;
+    width: 300px;
+    background: linear-gradient(to bottom right, #fff257cc, #ff5722c9);
+    padding: 5px 10px;
+    text-align: center;
+    font-size: 1.2em;
+    border-radius: 30px;
   }
 </style>

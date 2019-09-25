@@ -23,9 +23,9 @@ export default {
         this.$http.get('https://cors-anywhere.herokuapp.com/https://sbd4l7u6w1.execute-api.eu-central-1.amazonaws.com/dev/posts', {mode: 'cors'})
         .then(responce => {
           this.posts = responce.body;
-        }), responce => {
-          console.log("Request failed");
-        }
+        }).catch(err => {
+          console.log('Request failed', err);
+      })
     }   
   }
 }
@@ -34,17 +34,20 @@ export default {
 
 <style>
   #list p {
-    margin: 20px auto;
+    margin: 5px auto;
     display: block;
     width: 400px;
     text-align: center;
+    font-size: 1.2em;
   }
 
   #list h2 {
-    margin: 20px auto;
+    margin: 10px auto;
     display: block;
     width: 400px;
     text-align: center;
+    background: linear-gradient(to bottom right, #b7ff57ab, #ffff00d1);
+    border-radius: 30px;
   }
 
   #list h3 {
