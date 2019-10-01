@@ -2,10 +2,7 @@
   <div id="list" class="mx-auto" style="max-width: 20rem;">
     <h3 class="text-center" >You can get or refresh list with all your posts, just click on a button below! </h3>
     <b-button variant="success" class="mb-3" v-on:click="get"> Get All Posts </b-button>
-    <b-card
-    img-src="https://picsum.photos/600/300/?image=25"
-    img-alt="Image"
-    img-top
+    <b-card 
     tag="article"
     style="max-width: 20rem;"
     class="mb-2" 
