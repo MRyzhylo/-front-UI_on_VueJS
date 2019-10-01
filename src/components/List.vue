@@ -1,11 +1,18 @@
 <template>
-  <div id="list">
-    <h3>You can get or refresh list with all your posts, just click on a button below! </h3>
-    <button v-on:click="get"> Get All Posts </button>
-    <div v-for="post in posts" v-bind:key="post.id" class="single-block">
+  <div id="list" class="mx-auto" style="max-width: 20rem;">
+    <h3 class="text-center" >You can get or refresh list with all your posts, just click on a button below! </h3>
+    <b-button variant="success" class="mb-3" v-on:click="get"> Get All Posts </b-button>
+    <b-card
+    img-src="https://picsum.photos/600/300/?image=25"
+    img-alt="Image"
+    img-top
+    tag="article"
+    style="max-width: 20rem;"
+    class="mb-2" 
+    v-for="post in posts" v-bind:key="post.id">
       <h2> Title: {{post.title}} </h2>
       <p> Body: {{post.body}} </p>
-    </div>
+    </b-card>
   </div>
 </template>
 
@@ -33,38 +40,5 @@ export default {
 </script>
 
 <style>
-  #list p {
-    margin: 5px auto;
-    display: block;
-    width: 400px;
-    text-align: center;
-    font-size: 1.2em;
-  }
-
-  #list h2 {
-    margin: 10px auto;
-    display: block;
-    width: 400px;
-    text-align: center;
-    background: linear-gradient(to bottom right, #b7ff57ab, #ffff00d1);
-    border-radius: 30px;
-  }
-
-  #list h3 {
-    margin: 20px auto;
-    display: block;
-    width: 400px;
-    text-align: center;
-  }
-
-  #list button {
-      width: 150px;
-      display: block;
-      border: none;
-      border-radius: 30px;
-      padding: 10px 20px;
-      background: linear-gradient(to bottom right, #b7ff57ab, #ffff00d1);
-      margin: 0 auto;
-      outline: none;
-  }
+  
 </style>

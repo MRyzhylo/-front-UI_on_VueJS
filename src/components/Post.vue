@@ -1,13 +1,23 @@
 <template>
   <div id="post">
-    <div>
-      <input type="text" placeholder="Please enter your title here" v-model="title"/>
-      <textarea type="textarea" placeholder="Enter your text here" v-model="body"> </textarea>
-      <button v-on:click.prevent="post"> Submit </button>
-    </div>
-    <div v-if="submitted">
-      <p> Thanks for your message! </p>
-    </div>
+    <div class="mb-3 mx-auto" style="width: 20rem">
+      <b-form>
+      <b-form-input class="mb-3" type="text" placeholder="Please enter your title here" v-model="title"/>
+      <b-form-textarea 
+      class="mb-3"
+      id="textarea"
+      type="textarea"
+      rows="3"
+      max-rows="3" 
+      placeholder="Enter your text here" 
+      v-model="body"> 
+      </b-form-textarea>
+      <b-button variant="success" v-on:click.prevent="post"> Submit </b-button>
+      </b-form>
+    </div >
+    <b-alert variant="success" class="mx-auto" style="width: 20rem" v-if="submitted" show>
+      Thanks for your message!
+    </b-alert>
   </div>
 </template>
 
@@ -44,60 +54,5 @@ export default {
 </script>
 
 <style>
-  #post {
-    display: flex;
-    flex-direction: column;
-  }
 
-  #post div {
-      margin: 0 auto;
-  }
-
-  #post input {
-    display: block;
-    width: 250px;
-    height: 20px;
-    margin-bottom: 10px;
-    border-radius: 30px;
-    border: 1px solid #b7ff57ab;
-    outline: none;
-    text-align: center;
-  }
-
-  #post textarea {
-    display: block;
-    width: 250px;
-    height: 250px;
-    margin-bottom: 10px;
-    border-radius: 30px;
-    border: 1px solid #b7ff57ab;
-    outline: none;
-    text-align: center;
-  }
-
-  #post button {
-    width: 100px;
-    display: block;
-    border: none;
-    border-radius: 30px;
-    padding: 10px 20px;
-    background: linear-gradient(to bottom right, #b7ff57ab, #ffff00d1);
-    margin: 0 auto;
-    outline: none;
-  }
-
-  ::placeholder {
-      text-align: center;
-      opacity: 0.8;
-  }
-
-  #post p {
-    display: block;
-    width: 300px;
-    background: linear-gradient(to bottom right, #fff257cc, #ff5722c9);
-    padding: 5px 10px;
-    text-align: center;
-    font-size: 1.2em;
-    border-radius: 30px;
-  }
 </style>
